@@ -112,7 +112,7 @@ stages:
 
                       - task: UsePythonVersion@0
                         inputs:
-                          versionSpec: '3.9'
+                          versionSpec: '3.12'
 
                       - script: |
                           set -e
@@ -261,6 +261,8 @@ stages:
                     steps:
                       - checkout: self
                       - task: UsePythonVersion@0
+                        inputs:
+                          versionSpec: '3.12'
                       - script: |
                           python -m pip install "./tools/azure-sdk-tools[build]"
                         displayName: Install versioning tool dependencies
@@ -299,6 +301,8 @@ stages:
           artifact: ${{parameters.ArtifactName}}
           timeoutInMinutes: 5
         - task: UsePythonVersion@0
+          inputs:
+            versionSpec: '3.12'
         - script: |
             set -e
             python -m pip install twine
